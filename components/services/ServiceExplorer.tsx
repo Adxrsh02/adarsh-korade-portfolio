@@ -53,13 +53,24 @@ export function ServiceExplorer() {
     [activeId]
   );
 
-  // Scroll active tab into view when service changes
+  // Scroll active tab horizontally into view inside the tab container ONLY (does NOT scroll the window)
   useEffect(() => {
     if (!tabsRef.current) return;
     const activeTab = tabsRef.current.querySelector(
       `[data-service-id="${activeId}"]`
     ) as HTMLElement | null;
-    activeTab?.scrollIntoView({ behavior: "smooth", block: "nearest", inline: "center" });
+
+    if (activeTab) {
+      const container = tabsRef.current;
+      const tabLeft = activeTab.offsetLeft;
+      const tabWidth = activeTab.offsetWidth;
+      const containerWidth = container.clientWidth;
+
+      container.scrollTo({
+        left: tabLeft - containerWidth / 2 + tabWidth / 2,
+        behavior: "smooth",
+      });
+    }
   }, [activeId]);
 
   // Handle initial URL param navigation

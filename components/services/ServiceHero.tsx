@@ -14,7 +14,7 @@ export function ServiceHero() {
       id="services-hero"
       background="white"
       aria-label="Services hero section"
-      className="py-24 md:py-32 lg:py-40 min-h-[70vh] flex items-center"
+      className="!pt-6 md:!pt-8 lg:!pt-10 pb-12 md:pb-16 lg:pb-20"
     >
       <Container>
         <div className="flex flex-col gap-6 max-w-[760px]">

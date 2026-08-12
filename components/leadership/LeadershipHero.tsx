@@ -23,7 +23,7 @@ export function LeadershipHero() {
       id="leadership-hero"
       ariaLabelledBy="leadership-hero-heading"
       background="white"
-      className="pt-28 md:pt-32 lg:pt-36 pb-16 md:pb-20"
+      className="!pt-6 md:!pt-8 lg:!pt-10 pb-12 md:pb-16 lg:pb-20"
     >
       <Container>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
