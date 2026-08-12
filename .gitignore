@@ -39,3 +39,15 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Windows shell metadata
+desktop.ini
+
+# IDE / AI assistant files
+CLAUDE.md
+
+# Design reference & implementation notes (not part of the deployable codebase)
+Adarsh_Implementation Files/
+
+# Root-level duplicate of public/Section_images (design reference copy)
+Section_images/

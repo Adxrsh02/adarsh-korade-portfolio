@@ -1,26 +1,1130 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* =========================================================
+   DESIGN TOKENS — Tailwind CSS v4 @theme
+   Single Source of Truth for all design decisions.
+   Plan reference: implementation_plan.md §4
+   ========================================================= */
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  /* -------------------------------------------------------
+     COLORS — Neutral Palette
+  ------------------------------------------------------- */
+  --color-white: #ffffff;
+  --color-off-white: #fafafa;
+  --color-off-white-warm: #f5f5f0;
+  --color-black: #0a0a0a;
+
+  --color-gray-50: #fafafa;
+  --color-gray-100: #f5f5f5;
+  --color-gray-200: #e5e5e5;
+  --color-gray-300: #d4d4d4;
+  --color-gray-400: #a3a3a3;
+  --color-gray-500: #737373;
+  --color-gray-600: #525252;
+  --color-gray-700: #404040;
+  --color-gray-800: #262626;
+  --color-gray-900: #171717;
+
+  /* -------------------------------------------------------
+     COLORS — Accent (Orange)
+  ------------------------------------------------------- */
+  --color-accent-50: #fff7ed;
+  --color-accent-100: #ffedd5;
+  --color-accent-200: #fed7aa;
+  --color-accent-300: #fdba74;
+  --color-accent-400: #fb923c;
+  --color-accent-500: #f97316;
+  --color-accent-600: #ea580c;
+  --color-accent-700: #c2410c;
+  --color-accent-800: #9a3412;
+  --color-accent-900: #7c2d12;
+
+  /* -------------------------------------------------------
+     COLORS — Semantic Aliases
+  ------------------------------------------------------- */
+  --color-background: var(--color-white);
+  --color-background-alt: var(--color-off-white);
+  --color-foreground: var(--color-black);
+  --color-foreground-muted: var(--color-gray-500);
+  --color-border: var(--color-gray-200);
+  --color-border-strong: var(--color-gray-300);
+  --color-accent: var(--color-accent-500);
+  --color-accent-hover: var(--color-accent-600);
+
+  /* -------------------------------------------------------
+     TYPOGRAPHY — Font Families
+  ------------------------------------------------------- */
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-heading: "Helvetica Neue", Helvetica, Arial, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", "Fira Code", "Fira Mono", monospace;
+
+  /* -------------------------------------------------------
+     TYPOGRAPHY — Font Sizes (fluid mobile → desktop via breakpoints)
+  ------------------------------------------------------- */
+  --text-display: clamp(2.25rem, 5vw, 4rem);
+  /* Hero headline */
+  --text-h1: clamp(1.875rem, 4vw, 3rem);
+  --text-h2: clamp(1.5rem, 3vw, 2.25rem);
+  --text-h3: clamp(1.25rem, 2.5vw, 1.5rem);
+  --text-h4: clamp(1.125rem, 2vw, 1.25rem);
+  --text-body-lg: 1.125rem;
+  --text-body: 1rem;
+  --text-body-sm: 0.875rem;
+  --text-label: 0.75rem;
+  --text-overline: 0.6875rem;
+
+  /* -------------------------------------------------------
+     BORDER RADIUS
+  ------------------------------------------------------- */
+  --radius-sm: 0.25rem;
+  /* 4px  */
+  --radius-md: 0.5rem;
+  /* 8px  */
+  --radius-lg: 0.75rem;
+  /* 12px */
+  --radius-xl: 1rem;
+  /* 16px */
+  --radius-2xl: 1.5rem;
+  /* 24px */
+  --radius-full: 9999px;
+
+  /* -------------------------------------------------------
+     SHADOWS
+  ------------------------------------------------------- */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.08);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.10);
+  --shadow-navbar: 0 1px 0 rgba(0, 0, 0, 0.05);
+
+  /* -------------------------------------------------------
+     TRANSITIONS & ANIMATION
+  ------------------------------------------------------- */
+  --duration-fast: 150ms;
+  --duration-base: 250ms;
+  --duration-slow: 400ms;
+  --duration-smooth: 600ms;
+  --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+
+  /* -------------------------------------------------------
+     SPACING SCALE (8px base unit)
+  ------------------------------------------------------- */
+  --spacing-1: 0.25rem;
+  /* 4px  */
+  --spacing-2: 0.5rem;
+  /* 8px  */
+  --spacing-3: 0.75rem;
+  /* 12px */
+  --spacing-4: 1rem;
+  /* 16px */
+  --spacing-5: 1.25rem;
+  /* 20px */
+  --spacing-6: 1.5rem;
+  /* 24px */
+  --spacing-8: 2rem;
+  /* 32px */
+  --spacing-10: 2.5rem;
+  /* 40px */
+  --spacing-12: 3rem;
+  /* 48px */
+  --spacing-16: 4rem;
+  /* 64px */
+  --spacing-20: 5rem;
+  /* 80px */
+  --spacing-24: 6rem;
+  /* 96px */
+  --spacing-32: 8rem;
+  /* 128px */
+
+  /* -------------------------------------------------------
+     CONTAINER / MAX WIDTHS
+  ------------------------------------------------------- */
+  --max-w-content: 80rem;
+  /* 1280px — standard content max */
+  --max-w-wide: 90rem;
+  /* 1440px — wide/full-bleed max */
+  --max-w-narrow: 60rem;
+  /* 960px  — narrow/focused content */
+
+  /* -------------------------------------------------------
+     NAVBAR HEIGHT
+  ------------------------------------------------------- */
+  --navbar-height-mobile: 3.5rem;
+  /* 56px */
+  --navbar-height-desktop: 4rem;
+  /* 64px */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* =========================================================
+   BASE LAYER RESETS & GLOBAL STYLES
+   ========================================================= */
+
+@layer base {
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    tab-size: 4;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    line-height: 1.7;
+    font-size: var(--text-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Headings use Helvetica Neue */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-heading);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--color-black);
+  }
+
+  h3,
+  h4 {
+    letter-spacing: -0.01em;
+  }
+
+  h5,
+  h6 {
+    letter-spacing: 0;
+    font-weight: 600;
+  }
+
+  /* Links */
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  /* Images */
+  img,
+  video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Focus styles — custom ring */
+  :focus-visible {
+    outline: 2px solid var(--color-accent-600);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
+  }
+
+  /* Selection */
+  ::selection {
+    background-color: var(--color-accent-100);
+    color: var(--color-accent-800);
+  }
+
+  /* Scrollbar (Webkit) */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--color-gray-100);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-gray-300);
+    border-radius: var(--radius-full);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-gray-400);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* =========================================================
+   LENIS SMOOTH SCROLL INTEGRATION
+   ========================================================= */
+
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+/* =========================================================
+   REDUCED MOTION — accessibility
+   Disable all transitions + Lenis for users who prefer it.
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* =========================================================
+   UTILITY CLASSES — Custom (complement Tailwind utilities)
+   ========================================================= */
+
+/* Section vertical rhythm */
+.section-padding {
+  padding-top: var(--spacing-16);
+  padding-bottom: var(--spacing-16);
+}
+
+@media (min-width: 768px) {
+  .section-padding {
+    padding-top: var(--spacing-20);
+    padding-bottom: var(--spacing-20);
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-padding {
+    padding-top: var(--spacing-24);
+    padding-bottom: var(--spacing-24);
+  }
+}
+
+/* Heading typography utilities */
+.text-display {
+  font-family: var(--font-heading);
+  font-size: clamp(2.25rem, 5vw, 4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.text-section-heading {
+  font-family: var(--font-heading);
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+/* Visually hidden (accessible) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 9999;
+  padding: 0.75rem 1.5rem;
+  background: var(--color-accent-600);
+  color: white;
+  font-weight: 600;
+  border-radius: var(--radius-md);
+  font-size: 0.875rem;
+  transition: top var(--duration-fast) var(--ease-out);
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* Body scroll lock (mobile drawer) */
+body.drawer-open {
+  overflow: hidden;
+}
+
+/* =========================================================
+   SERVICES PAGE UTILITIES
+   ========================================================= */
+
+/* Duration variants for accordion and image crossfade */
+.duration-400 {
+  transition-duration: 400ms;
+}
+
+.duration-600 {
+  transition-duration: 600ms;
+}
+
+/* Grid-template-rows transition (accordion height animation) */
+.transition-\[grid-template-rows\] {
+  transition-property: grid-template-rows;
+}
+
+/* Hide scrollbar (service tab strip) */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Line clamp utilities */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* Accordion grid rows animation — targeted, not broad */
+.accordion-grid {
+  display: grid;
+  transition-property: grid-template-rows;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* =========================================================
+   CONTACT PAGE UTILITIES
+   ========================================================= */
+
+/* Toast slide-up entrance animation */
+@keyframes toast-enter {
+  from {
+    opacity: 0;
+    transform: translateY(0.75rem) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.animate-toast-enter {
+  animation: toast-enter 300ms cubic-bezier(0, 0, 0.2, 1) forwards;
+}
+
+/* Contact hero photo — entrance on mount */
+@keyframes hero-photo-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.97) translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-hero-photo {
+  animation: hero-photo-enter 600ms cubic-bezier(0, 0, 0.2, 1) forwards;
+}
+
+/* =========================================================
+   FOOTER UTILITIES
+   ========================================================= */
+
+/* Availability dot — pulsing green indicator */
+@keyframes availability-pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.5);
+    opacity: 0.6;
+  }
+}
+
+.availability-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background-color: #22C55E;
+  flex-shrink: 0;
+  animation: availability-pulse 2.4s ease-in-out infinite;
+}
+
+/* Footer nav link — animated underline on hover */
+.footer-link {
+  position: relative;
+  display: inline-block;
+}
+
+.footer-link::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background-color: var(--color-black);
+  transition: width var(--duration-base) var(--ease-out);
+}
+
+.footer-link:hover::after {
+  width: 100%;
+}
+
+/* Footer CTA arrow — slides right on hover */
+.footer-cta-arrow {
+  display: inline-block;
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.footer-cta-link:hover .footer-cta-arrow {
+  transform: translateX(4px);
+}
+
+/* =========================================================
+   PROJECTS PAGE UTILITIES
+   ========================================================= */
+
+/* Project card scroll-reveal animation */
+@keyframes project-card-enter {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.97);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.project-card-enter {
+  animation: project-card-enter 400ms cubic-bezier(0, 0, 0.2, 1) both;
+}
+
+/* Staggered delay variants (used for card grid) */
+.animation-delay-100 {
+  animation-delay: 100ms;
+}
+
+.animation-delay-150 {
+  animation-delay: 150ms;
+}
+
+.animation-delay-200 {
+  animation-delay: 200ms;
+}
+
+.animation-delay-250 {
+  animation-delay: 250ms;
+}
+
+.animation-delay-300 {
+  animation-delay: 300ms;
+}
+
+.animation-delay-350 {
+  animation-delay: 350ms;
+}
+
+/* Lightbox overlay fade */
+@keyframes lightbox-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes lightbox-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.lightbox-overlay {
+  animation: lightbox-fade-in 200ms ease-out forwards;
+}
+
+.lightbox-image {
+  animation: lightbox-scale-in 250ms cubic-bezier(0, 0, 0.2, 1) forwards;
+}
+
+/* Workflow step fade-up */
+@keyframes workflow-step-enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.workflow-step-enter {
+  animation: workflow-step-enter 400ms cubic-bezier(0, 0, 0.2, 1) both;
+}
+
+/* Hero stats count-up shimmer */
+@keyframes stat-enter {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stat-enter {
+  animation: stat-enter 500ms cubic-bezier(0, 0, 0.2, 1) both;
+}
+
+/* Filter bar sticky transition */
+.filter-bar-sticky {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Performance table best-row highlight */
+.table-best-row {
+  background-color: var(--color-accent-50);
+}
+
+/* Tech badge group hover */
+.tech-group:hover .tech-group-label {
+  color: var(--color-accent-600);
+}
+
+/* =========================================================
+   HERO SECTION ANIMATIONS
+   Entrance, role rotation, and 3D scene reveal.
+   All disabled automatically when prefers-reduced-motion
+   fires the global override at the top of this file.
+   ========================================================= */
+
+/* Fade-up entrance — used for text content */
+@keyframes hero-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scale + fade — used for the 3D visual reveal */
+@keyframes hero-3d-enter {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Role rotation — fade between roles */
+@keyframes hero-role-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-role-out {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  to {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}
+
+/* Base animation class */
+.hero-animate {
+  animation: hero-fade-up 500ms cubic-bezier(0, 0, 0.2, 1) both;
+}
+
+/* Stagger delays — applied to each hero content block */
+.hero-delay-0 {
+  animation-delay: 0ms;
+}
+
+.hero-delay-1 {
+  animation-delay: 100ms;
+}
+
+.hero-delay-2 {
+  animation-delay: 200ms;
+}
+
+.hero-delay-3 {
+  animation-delay: 300ms;
+}
+
+.hero-delay-4 {
+  animation-delay: 400ms;
+}
+
+.hero-delay-5 {
+  animation-delay: 500ms;
+}
+
+/* 3D scene entrance */
+.hero-3d-enter {
+  animation: hero-3d-enter 700ms cubic-bezier(0.16, 1, 0.3, 1) 300ms both;
+}
+
+/* Role text states */
+.hero-role-entering {
+  animation: hero-role-in 300ms cubic-bezier(0, 0, 0.2, 1) both;
+}
+
+.hero-role-exiting {
+  animation: hero-role-out 300ms cubic-bezier(0.4, 0, 1, 1) both;
+}
+
+/* Hero CTA arrow — slides right on hover */
+.hero-cta-arrow {
+  display: inline-block;
+  transition: transform var(--duration-fast) var(--ease-out);
+}
+
+.hero-cta-primary:hover .hero-cta-arrow {
+  transform: translateX(4px);
+}
+
+/* Hero section container — reserves viewport space to prevent CLS */
+.hero-visual-container {
+  position: relative;
+  /* Size reserved before 3D canvas loads */
+  contain: layout style;
+}
+
+/* =========================================================
+   ABOUT PAGE ANIMATIONS
+   Scroll-reveal, bar growth, bio expand, timeline draw.
+   All disabled automatically when prefers-reduced-motion
+   fires the global override at the top of this file.
+   ========================================================= */
+
+/* Fade-up entrance — reused for all About section reveals */
+@keyframes about-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scale-in — for 3D visual section */
+@keyframes about-scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Bar grow — for Engineering Activity bars */
+@keyframes about-bar-grow {
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: var(--bar-width, 100%);
+  }
+}
+
+/* Count-up — handled in JS, but base fade for numbers */
+@keyframes about-number-appear {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Timeline line draw — vertical scaleY reveal */
+@keyframes about-timeline-draw {
+  from {
+    transform: scaleY(0);
+  }
+
+  to {
+    transform: scaleY(1);
+  }
+}
+
+/* Bio expand — smooth height reveal */
+@keyframes about-bio-expand {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+
+  to {
+    opacity: 1;
+    max-height: 1000px;
+  }
+}
+
+/* Base scroll-reveal class — applied by ScrollReveal component */
+.about-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 500ms cubic-bezier(0, 0, 0.2, 1),
+    transform 500ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.about-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger delays for grid/list reveals */
+.about-reveal-delay-0 {
+  transition-delay: 0ms;
+}
+
+.about-reveal-delay-1 {
+  transition-delay: 80ms;
+}
+
+.about-reveal-delay-2 {
+  transition-delay: 160ms;
+}
+
+.about-reveal-delay-3 {
+  transition-delay: 240ms;
+}
+
+.about-reveal-delay-4 {
+  transition-delay: 320ms;
+}
+
+.about-reveal-delay-5 {
+  transition-delay: 400ms;
+}
+
+/* 3D visual entrance */
+.about-3d-enter {
+  animation: about-scale-in 700ms cubic-bezier(0.16, 1, 0.3, 1) 200ms both;
+}
+
+/* Timeline vertical line origin */
+.timeline-line {
+  transform-origin: top center;
+  animation: about-timeline-draw 600ms cubic-bezier(0, 0, 0.2, 1) both;
+}
+
+/* Experience entry hover — left accent line */
+.experience-entry {
+  position: relative;
+  transition:
+    background-color var(--duration-base) var(--ease-default),
+    box-shadow var(--duration-base) var(--ease-default);
+}
+
+.experience-entry::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background-color: var(--color-accent);
+  border-radius: var(--radius-full);
+  opacity: 0;
+  transition: opacity var(--duration-base) var(--ease-default);
+}
+
+.experience-entry:hover::before {
+  opacity: 1;
+}
+
+/* Certification card hover */
+.cert-card-hover {
+  transition:
+    transform var(--duration-base) var(--ease-out),
+    box-shadow var(--duration-base) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out);
+}
+
+.cert-card-hover:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-border-strong);
+}
+
+/* Activity bar animation class */
+.activity-bar {
+  height: 6px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-accent);
+  width: 0%;
+  transition: width 700ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.activity-bar.is-animated {
+  width: var(--bar-width, 0%);
+}
+
+.activity-bar-secondary {
+  background-color: var(--color-gray-300);
+}
+
+/* Lightbox — reuse existing classes from Projects page */
+/* (lightbox-overlay and lightbox-image already defined above) */
+
+/* About 3D container */
+.about-3d-container {
+  position: relative;
+  contain: layout style;
+}
+
+/* Journey pull-quote styling */
+.journey-pullquote {
+  font-family: var(--font-heading);
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-weight: 300;
+  line-height: 1.4;
+  color: var(--color-gray-700);
+  border-left: 3px solid var(--color-accent);
+  padding-left: 1.5rem;
+  margin: 2rem 0;
+  font-style: italic;
+}
+
+/* Photo gallery layout for Jio Journey page */
+.jio-gallery-feature {
+  grid-column: 1 / -1;
+}
+
+.jio-gallery-half {
+  grid-column: span 1;
+}
+
+.jio-gallery-wide {
+  grid-column: 1 / -1;
+}
+
+/* =========================================================
+   LEADERSHIP PAGE ANIMATIONS
+   ========================================================= */
+
+/* ── Timeline vertical line — animates scaleY(0 → 1) on scroll ── */
+.leadership-timeline-line {
+  transform-origin: top center;
+  transform: scaleY(0);
+  transition: transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.leadership-timeline-line.is-visible {
+  transform: scaleY(1);
+}
+
+/* ── Timeline dot — pops in when line reaches it ── */
+.leadership-timeline-dot {
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease;
+  opacity: 0;
+  transform: scale(0);
+}
+
+.leadership-timeline-dot.is-visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ── Image hover — subtle zoom on hover ── */
+.leadership-img-hover {
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.leadership-img-hover img {
+  transition: transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: transform;
+}
+
+.leadership-img-hover:hover img {
+  transform: scale(1.04);
+}
+
+/* ── Lesson item — highlight on hover ── */
+.leadership-lesson-item {
+  transition: background-color 0.2s ease;
+  border-radius: 0.5rem;
+}
+
+.leadership-lesson-item:hover {
+  background-color: #FAFAFA;
+}
+
+/* ── Closing section lines — stagger reveal ── */
+.leadership-closing-line {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.leadership-closing-line.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.leadership-closing-line-delay-1 { transition-delay: 0.1s; }
+.leadership-closing-line-delay-2 { transition-delay: 0.2s; }
+.leadership-closing-line-delay-3 { transition-delay: 0.3s; }
+.leadership-closing-line-delay-4 { transition-delay: 0.45s; }
+.leadership-closing-line-delay-5 { transition-delay: 0.6s; }
+
+/* ── Parallax container ── */
+.leadership-parallax-container {
+  overflow: hidden;
+}
+
+.leadership-parallax-inner {
+  will-change: transform;
+  transition: transform 0.1s linear;
+}
+
+/* ── Reduced motion — disable all leadership animations ── */
+@media (prefers-reduced-motion: reduce) {
+  .leadership-timeline-line,
+  .leadership-timeline-dot,
+  .leadership-img-hover img,
+  .leadership-closing-line,
+  .leadership-parallax-inner,
+  .friendship-quote-line,
+  .friendship-word {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    transform: none !important;
+    opacity: 1 !important;
+    clip-path: none !important;
+    width: 100% !important;
+  }
+}
+
+/* =========================================================
+   FRIENDSHIP / CORE-TEAM SECTION PREMIUM ANIMATIONS
+   ========================================================= */
+
+/* ── Quote left-border line draw ── */
+.friendship-quote-line {
+  height: 0;
+  transition: height 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.friendship-quote-line.is-visible {
+  height: 100%;
+}
+
+
+
+/* ── Word-by-word stagger on the subtitle ── */
+.friendship-word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.friendship-word.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Decorative heart pulse ── */
+@keyframes heart-beat {
+  0%, 100% { transform: scale(1); }
+  40%       { transform: scale(1.25); }
+  60%       { transform: scale(1.1); }
+}
+
+.friendship-heart {
+  display: inline-block;
+  animation: heart-beat 2.4s ease-in-out infinite;
+  transform-origin: center;
 }
