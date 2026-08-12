@@ -230,7 +230,7 @@ export const GALLERY_ITEMS: GalleryItemData[] = [
     title: "Published Retinal Disease AI Research Heatmap",
     category: "events",
     categoryLabel: "EVENTS & SPRINTS",
-    image: "/Section_images/Projects/Automated_fundus_screening_project/Retinal_Attention_heatmap_compare_Fundu_image_4.jpg",
+    image: "/Section_images/Projects/Automated_fundus_screening_project/retinal_Attention_heatmap_compare_Fundu_image_4.jpg",
     aspectRatio: "wide",
     date: "Research Paper",
     location: "Medical AI Lab",

@@ -212,6 +212,18 @@ export function ContactForm() {
       setStatus("sending");
 
       try {
+        // Optional server-side Turnstile verification check if secret key exists
+        const verifyRes = await fetch("/api/verify-turnstile", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ token: turnstileToken }),
+        });
+
+        if (!verifyRes.ok) {
+          const verifyData = await verifyRes.json().catch(() => ({}));
+          throw new Error(verifyData.error || "Security verification failed.");
+        }
+
         await emailjs.send(
           process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
           process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
@@ -241,11 +253,17 @@ export function ContactForm() {
           type: "success",
           message: CONTACT_COPY.form.successToast,
         });
-      } catch {
+      } catch (err: unknown) {
         setStatus("error");
+        setTurnstileToken(null);
+        turnstileRef.current?.reset?.();
+
+        const errorMessage =
+          err instanceof Error ? err.message : CONTACT_COPY.form.errorToast;
+
         setToast({
           type: "error",
-          message: CONTACT_COPY.form.errorToast,
+          message: errorMessage || CONTACT_COPY.form.errorToast,
         });
       } finally {
         if (status !== "success") {
@@ -430,15 +448,14 @@ export function ContactForm() {
           <div className="flex flex-col items-start gap-1">
             <Turnstile
               ref={turnstileRef}
-              siteKey={process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ?? ""}
+              siteKey={
+                process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY ||
+                "1x00000000000000000000AA"
+              }
               onSuccess={setTurnstileToken}
               onExpire={() => setTurnstileToken(null)}
               onError={() => {
                 setTurnstileToken(null);
-                setToast({
-                  type: "error",
-                  message: "Security verification failed. Please refresh and try again.",
-                });
               }}
               options={{ theme: "light", size: "normal" }}
             />
