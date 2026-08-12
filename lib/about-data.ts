@@ -125,6 +125,14 @@ export const EXPERIENCE_ENTRIES: ExperienceEntry[] = [
         duration: "1 yr 1 mo",
       },
     ],
+    responsibilities: [
+      "Led a 25+ member team and coordinated with faculty, external stakeholders, and student teams to execute entrepreneurship-focused events and initiatives.",
+      "Organized major events including Startup Expos, 24-hour Hackathons, workshops, and live projects, managing planning, execution, and team coordination.",
+      "Worked on sponsorship and partnership acquisition, approaching coaching institutes, study-abroad consultants, food brands, and local businesses to secure event support.",
+      "Handled marketing, outreach, and PR activities, pitching event value propositions and audience reach to potential sponsors and partners.",
+      "Built and maintained relationships with external partners while coordinating social media promotions, branding, stalls, and audience engagement.",
+      "Developed practical skills in Business Development, Lead Generation, Client Communication, Negotiation, Marketing, and Stakeholder Management.",
+    ],
     skills: ["Canva", "Social Media", "Team Leadership", "Event Management"],
     certificatePath:
       "/images/about/certificates/E-cell_Chairperson_Complition_Certificate.png",
