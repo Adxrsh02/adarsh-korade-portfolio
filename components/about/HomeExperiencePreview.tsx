@@ -189,11 +189,10 @@ export function HomeExperiencePreview() {
                   {/* Center Column: Node Dot Marker */}
                   <div className="flex justify-center pt-2.5 z-10">
                     <div
-                      className={`w-3.5 h-3.5 rounded-full border-2 bg-white transition-all duration-300 ${
-                        item.isCurrent
+                      className={`w-3.5 h-3.5 rounded-full border-2 bg-white transition-all duration-300 ${item.isCurrent
                           ? "border-[#F97316] bg-[#F97316] ring-4 ring-[#F97316]/15 group-hover:scale-125"
                           : "border-[#A3A3A3] group-hover:border-[#F97316] group-hover:bg-[#F97316] group-hover:scale-125"
-                      }`}
+                        }`}
                       aria-hidden="true"
                     />
                   </div>
@@ -262,11 +261,10 @@ export function HomeExperiencePreview() {
                 <div className="block md:hidden relative pl-6 border-l-2 border-[#E5E5E5] group-hover:border-[#F97316] transition-colors duration-300">
                   {/* Mobile Node Dot */}
                   <div
-                    className={`absolute -left-[7px] top-1.5 w-3 h-3 rounded-full border-2 bg-white ${
-                      item.isCurrent
+                    className={`absolute -left-[7px] top-1.5 w-3 h-3 rounded-full border-2 bg-white ${item.isCurrent
                         ? "border-[#F97316] bg-[#F97316] ring-4 ring-[#F97316]/15"
                         : "border-[#A3A3A3] group-hover:border-[#F97316] group-hover:bg-[#F97316]"
-                    }`}
+                      }`}
                     aria-hidden="true"
                   />
 

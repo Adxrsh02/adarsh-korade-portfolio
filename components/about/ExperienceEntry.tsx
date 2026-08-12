@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { Award, ExternalLink } from "lucide-react";
 import { Badge } from "@/components/ui/Badge";
-import { Button } from "@/components/ui/Button";
 import type { ExperienceEntry } from "@/types/about";
 
 interface ExperienceEntryProps {
@@ -14,7 +14,7 @@ interface ExperienceEntryProps {
  * ExperienceEntry
  * ───────────────
  * Single timeline entry — company, role(s), responsibilities,
- * skills, and optional certificate link.
+ * skills, and high-impact premium certificate button.
  *
  * Client component for expand/collapse of responsibilities.
  */
@@ -140,34 +140,31 @@ export function ExperienceEntryCard({ entry }: ExperienceEntryProps) {
           </div>
         )}
 
-        {/* Certificate CTA */}
+        {/* Premium Standout Certificate Button */}
         {entry.certificatePath && entry.certificateLabel && (
-          <div className="pt-1">
-            <Button
-              as="a"
+          <div className="pt-3 mt-2 border-t border-[#F5F5F5] flex items-center">
+            <a
               href={entry.certificatePath}
               target="_blank"
               rel="noopener noreferrer"
-              variant="ghost"
-              size="sm"
               aria-label={`View ${entry.certificateLabel} (opens in new tab)`}
+              className="group/cert inline-flex items-center gap-3 px-4 py-2.5 rounded-xl text-xs font-bold text-[#0A0A0A] bg-white hover:bg-[#FFF7ED] border-2 border-[#E5E5E5] hover:border-[#F97316] shadow-2xs hover:shadow-md transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#F97316] focus-visible:ring-offset-2 max-w-full"
             >
-              <svg
-                aria-hidden="true"
-                className="h-3.5 w-3.5"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={2}
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M13.5 6H5.25A2.25 2.25 0 0 0 3 8.25v10.5A2.25 2.25 0 0 0 5.25 21h10.5A2.25 2.25 0 0 0 18 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"
-                />
-              </svg>
-              {entry.certificateLabel} ↗
-            </Button>
+              <span className="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-[#FFF7ED] text-[#F97316] border border-[#FDBA74]/60 shrink-0 group-hover/cert:scale-110 group-hover/cert:bg-[#F97316] group-hover/cert:text-white transition-all duration-200">
+                <Award size={15} strokeWidth={2.5} aria-hidden="true" />
+              </span>
+              <div className="flex flex-col text-left min-w-0">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-[#F97316]">
+                  Verified Certificate
+                </span>
+                <span className="text-xs font-semibold text-[#0A0A0A] group-hover/cert:text-[#0A0A0A] leading-tight truncate max-w-[220px] sm:max-w-none">
+                  {entry.certificateLabel}
+                </span>
+              </div>
+              <span className="inline-flex items-center justify-center w-6 h-6 rounded-md bg-[#FAFAFA] group-hover/cert:bg-[#F97316] text-[#737373] group-hover/cert:text-white ml-2 shrink-0 transition-all duration-200">
+                <ExternalLink size={13} strokeWidth={2} />
+              </span>
+            </a>
           </div>
         )}
       </div>

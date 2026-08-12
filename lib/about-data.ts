@@ -126,6 +126,9 @@ export const EXPERIENCE_ENTRIES: ExperienceEntry[] = [
       },
     ],
     skills: ["Canva", "Social Media", "Team Leadership", "Event Management"],
+    certificatePath:
+      "/images/about/certificates/E-cell_Chairperson_Complition_Certificate.png",
+    certificateLabel: "E-Cell Chairperson Completion Certificate",
   },
   {
     id: "jpl-data-engineer-intern",
