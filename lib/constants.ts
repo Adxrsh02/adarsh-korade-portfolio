@@ -94,7 +94,7 @@ export const FOOTER_CTA: FooterCTAContent = {
   description:
     "Whether you're building an AI-powered product, a scalable web application, or an enterprise data platform — I'd love to help bring your ideas to life with modern technologies and thoughtful engineering.",
   primaryCTA: { label: "Contact Me", href: "/contact" },
-  secondaryCTA: { label: "Download Resume", href: RESUME_PATH },
+  secondaryCTA: { label: "View My Resume", href: RESUME_PATH },
   tertiaryCTA: { label: "View Projects", href: "/projects" },
 } as const;
 

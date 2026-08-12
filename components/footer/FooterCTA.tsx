@@ -99,7 +99,7 @@ export function FooterCTA() {
                 <ArrowRight size={15} className="shrink-0 transition-transform duration-200 group-hover:translate-x-1" />
               </Button>
 
-              {/* Third Action: Download Resume */}
+              {/* Third Action: View My Resume */}
               <Button
                 as="a"
                 href={RESUME_PATH}
@@ -110,7 +110,7 @@ export function FooterCTA() {
                 className="w-full sm:w-auto px-5 text-[#404040] hover:text-[#0A0A0A]"
               >
                 <Download size={15} className="shrink-0" aria-hidden="true" />
-                <span>Download Resume</span>
+                <span>View My Resume</span>
               </Button>
             </div>
 

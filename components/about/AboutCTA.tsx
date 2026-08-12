@@ -42,7 +42,7 @@ export function AboutCTA() {
               variant="secondary"
               size="lg"
             >
-              Download Resume
+              View My Resume
             </Button>
             <Button as={Link} href="/projects" variant="ghost" size="lg">
               View My Work

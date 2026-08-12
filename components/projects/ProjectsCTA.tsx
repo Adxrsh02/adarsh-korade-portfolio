@@ -45,7 +45,7 @@ export function ProjectsCTA() {
               rel="noopener noreferrer"
               download="Adarsh_Korade_CV.pdf"
             >
-              Download Resume
+              View My Resume
             </Button>
           </div>
 

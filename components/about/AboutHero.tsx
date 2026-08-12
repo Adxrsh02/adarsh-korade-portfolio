@@ -16,7 +16,12 @@ import { AboutBioExpand } from "@/components/about/AboutBioExpand";
 
 export function AboutHero() {
   return (
-    <SectionWrapper id="about-intro" background="white" ariaLabelledBy="about-hero-heading">
+    <SectionWrapper
+      id="about-intro"
+      background="white"
+      ariaLabelledBy="about-hero-heading"
+      className="!pt-6 md:!pt-8 lg:!pt-10 pb-12 md:pb-16 lg:pb-20"
+    >
       <Container>
         <div className="grid grid-cols-1 gap-10 lg:grid-cols-[1fr_420px] lg:gap-16 lg:items-start">
           {/* ── Left: Text content ── */}
@@ -87,7 +92,7 @@ export function AboutHero() {
                 variant="secondary"
                 size="lg"
               >
-                Download Resume
+                View My Resume
               </Button>
             </div>
 
