@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Analytics } from "@vercel/analytics/react";
 import { inter, fontVariables } from "@/lib/fonts";
 import { SITE_CONFIG } from "@/lib/constants";
 import { Navbar } from "@/components/navigation/Navbar";
@@ -94,6 +95,9 @@ export default function RootLayout({
 
         {/* Floating back-to-top button */}
         <BackToTop />
+
+        {/* Vercel Web Analytics */}
+        <Analytics />
       </body>
     </html>
   );
